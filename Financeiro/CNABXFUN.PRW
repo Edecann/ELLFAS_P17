@@ -21,6 +21,7 @@ Local cPerApu := ""
 Local cDtVenc := ""
 Local cValTit := ""
 Local cTpInsc := ""
+Local cBosta  := ""
 
 If SEA->EA_MODELO $ "16" //16-PAGAMENTO DE TRIBUTOS - DARF NORMAL - SEGMENTO N2
                      

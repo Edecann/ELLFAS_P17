@@ -2,6 +2,8 @@
 //#INCLUDE "COMXFUN.CH"
 #Include 'FWMVCDEF.ch'
 
+//Alterado Edecan
+
 #DEFINE POS_QATU		1
 #DEFINE POS_QPEDVEN		2
 #DEFINE POS_QEMP		3
