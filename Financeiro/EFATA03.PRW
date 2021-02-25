@@ -1,6 +1,8 @@
 #INCLUDE "rwmake.ch"                                    
 #Include "TbiConn.ch"
-#INCLUDE "topconn.ch"                                   
+#INCLUDE "topconn.ch"   
+
+// Ajuste Kurts 11:11 de 25/02/21                             
 
 /*/
 ‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹‹
