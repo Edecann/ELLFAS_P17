@@ -3,6 +3,7 @@
 #Include 'FWMVCDEF.ch'
 
 //Alterado Edecan
+//Alterado por Kurts
 
 #DEFINE POS_QATU		1
 #DEFINE POS_QPEDVEN		2
@@ -32,12 +33,12 @@
 =====================================================================================
 |Programa:             |Autor: Wanderley R. Neto                   |Data: 04/09/2018|
 =====================================================================================
-|Descrição: Consulta de saldo multiempresas. Considera o saldo do produto na Ellfas |
+|Descriï¿½ï¿½o: Consulta de saldo multiempresas. Considera o saldo do produto na Ellfas |
 | e o de seus produtos alternativos na ARL e MARLIN                                 |
 =====================================================================================
-|CONTROLE DE ALTERAÇÕES:                                                            |
+|CONTROLE DE ALTERAï¿½ï¿½ES:                                                            |
 =====================================================================================
-|Programador          |Data       |Descrição                                        |
+|Programador          |Data       |Descriï¿½ï¿½o                                        |
 =====================================================================================
 |                     |           |                                                 |
 =====================================================================================
@@ -98,7 +99,7 @@ dbSetOrder(1)
 
 If MsSeek(cFilialSB1+cProduto) 
 
-    cArmPA   := SB1->B1_LOCPAD //Montes - 26/06/2019 - Considera o Armazem padrão do produto
+    cArmPA   := SB1->B1_LOCPAD //Montes - 26/06/2019 - Considera o Armazem padrï¿½o do produto
 
 	cCursor  := "MAVIEWSB2"
 	lQuery   := .T.
@@ -235,11 +236,11 @@ If MsSeek(cFilialSB1+cProduto)
 	If !Empty(aViewB2)
 		
 		DEFINE FONT oBold NAME "Arial" SIZE 0, -12 BOLD
-		DEFINE MSDIALOG oDlg FROM 000,000  TO 500,600 TITLE "Saldos em Estoque - ARMAZÉM "+cArmPA Of oMainWnd PIXEL 
+		DEFINE MSDIALOG oDlg FROM 000,000  TO 500,600 TITLE "Saldos em Estoque - ARMAZï¿½M "+cArmPA Of oMainWnd PIXEL 
 		@ 023,004 To 24,296 Label "" of oDlg PIXEL
 		@ 113,004 To 114,296 Label "" of oDlg PIXEL
 		//"Local"###"Qtd.Disponivel"###"Sld.Atual"###"Qtd.Pedido de Vendas"###"Qtd. Reservada"   
-		oListBox := TWBrowse():New( 30,2,297,69,,{'Emp',STR0047,'Disponivel 2ª UM',STR0048,'Saldo 2ª UM',STR0049,'Qtd Ped. 2ª UM',STR0053,'Reserva 2ª UM'},{17,55,55,55,55,55,55,55},oDlg,,,,,,,,,,,,.F.,,.T.,,.F.,,,)  
+		oListBox := TWBrowse():New( 30,2,297,69,,{'Emp',STR0047,'Disponivel 2ï¿½ UM',STR0048,'Saldo 2ï¿½ UM',STR0049,'Qtd Ped. 2ï¿½ UM',STR0053,'Reserva 2ï¿½ UM'},{17,55,55,55,55,55,55,55},oDlg,,,,,,,,,,,,.F.,,.T.,,.F.,,,)  
 		oListBox:SetArray(aViewB2)
 		oListBox:bLine := { || aViewB2[oListBox:nAT]}
 		oListBox:nAt   := Max(1,nAtIni)
@@ -250,25 +251,25 @@ If MsSeek(cFilialSB1+cProduto)
 		@ 120,007 SAY "Quantidade Disponivel    " of oDlg PIXEL //
 		@ 119,075 MsGet nTotDisp Picture PesqPict("SB2","B2_QATU") of oDlg PIXEL SIZE 070,009 When .F.
 		
-		@ 120,155 SAY "Quantidade Dispo 2ª UM " of oDlg PIXEL //
+		@ 120,155 SAY "Quantidade Dispo 2ï¿½ UM " of oDlg PIXEL //
 		@ 119,223 MsGet nQtdSegUM Picture PesqPict("SB2","B2_QEMP") of oDlg PIXEL SIZE 070,009 When .F.
 		
 		@ 135,007 SAY "Saldo Atual   " of oDlg PIXEL //
 		@ 134,075 MsGet nSaldo Picture PesqPict("SB2","B2_QATU") of oDlg PIXEL SIZE 070,009 When .F.
 		
-		@ 135,155 SAY "Saldo 2ª UM" of oDlg PIXEL //
+		@ 135,155 SAY "Saldo 2ï¿½ UM" of oDlg PIXEL //
 		@ 134,223 MsGet nTot2UM Picture PesqPict("SB2","B2_SALPEDI") of oDlg PIXEL SIZE 070,009 When .F.
 		
 		@ 150,007 SAY "Qtd. Pedido de Vendas  " of oDlg PIXEL //
 		@ 149,075 MsGet nQtPv Picture PesqPict("SB2","B2_QPEDVEN") of oDlg PIXEL SIZE 070,009 When .F.
 		
-		@ 150,155 SAY "Qtd. Pedido 2ª UM  " of oDlg PIXEL //
+		@ 150,155 SAY "Qtd. Pedido 2ï¿½ UM  " of oDlg PIXEL //
 		@ 149,223 MsGet nPedSegUM Picture PesqPict("SB2","B2_RESERVA") of oDlg PIXEL SIZE 070,009 When .F.
 		
 		@ 165,007 SAY "Qtd. Reservada" of oDlg PIXEL //
 		@ 164,075 MsGet nReserva Picture PesqPict("SB2","B2_QEMPSA") of oDlg PIXEL SIZE 070,009 When .F.
 		
-		@ 165,155 SAY 'Qtd. Reserva 2ª UM' of oDlg PIXEL
+		@ 165,155 SAY 'Qtd. Reserva 2ï¿½ UM' of oDlg PIXEL
 		@ 164,223 MsGet nResSegUM Picture PesqPict("SB2","B2_QTNP") of oDlg PIXEL SIZE 070,009 When .F.
 		
 		// @ 180,007 SAY RetTitle("B2_QNPT") of oDlg PIXEL
@@ -284,16 +285,16 @@ If MsSeek(cFilialSB1+cProduto)
 		// @ 194,223 MsGet nQAClass Picture PesqPict("SB2","B2_QACLASS") of oDlg PIXEL SIZE 070,009 When .F.
 
    
-		//ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-		//³ Ponto de entrada para incluir campos na grid  e edits na tela de Consulta ao estoque ³
-		//ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
+		//ï¿½ Ponto de entrada para incluir campos na grid  e edits na tela de Consulta ao estoque ï¿½
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		If ExistBlock("MTGRDVW")                                   
 			ExecBlock("MTGRDVW",.F.,.F.,{@aViewB2,@oListBox,@oDlg})
 		Endif 
 		
-		//ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-		//³ Ponto de entrada para incluir Botao do Usuario na Dialog Saldos do SB2 ³
-		//ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
+		//ï¿½ Ponto de entrada para incluir Botao do Usuario na Dialog Saldos do SB2 ï¿½
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		If ExistBlock("BVIEWSB2") 
 			@ 230,190 BUTTON STR0100 SIZE 045,010  FONT oDlg:oFont ACTION (ExecBlock("BVIEWSB2",.F.,.F.)) Of oDlg PIXEL //"Especifico"
 		Endif
@@ -316,7 +317,7 @@ Return(.T.)
 =====================================================================================
 |Programa:             |Autor: Wanderley R. Neto                   |Data: 04/09/2018|
 =====================================================================================
-|Descrição: Rotina que informa o saldo dos produtos alternativos                    |
+|Descriï¿½ï¿½o: Rotina que informa o saldo dos produtos alternativos                    |
 |                                                                                   |
 =====================================================================================
 */
@@ -390,8 +391,8 @@ Return aSB2
 =====================================================================================
 |Programa:             |Autor: Wanderley R. Neto                   |Data: 10/09/2018 |
 =====================================================================================
-|Descrição: Rotina que monta uma browse com os produtos para acesso dos vendedores  |
-|  que não possuem acesso ao cadastro dos produtos.                                 |
+|Descriï¿½ï¿½o: Rotina que monta uma browse com os produtos para acesso dos vendedores  |
+|  que nï¿½o possuem acesso ao cadastro dos produtos.                                 |
 =====================================================================================
 */
 User Function RESTC01V()
@@ -415,7 +416,7 @@ Return
 =====================================================================================
 |Programa: Menudef    |Autor: Wanderley R. Neto                   |Data: 10/09/2018 |
 =====================================================================================
-|Descrição: Define menu da rotina                                                   |
+|Descriï¿½ï¿½o: Define menu da rotina                                                   |
 |                                                                                   |
 =====================================================================================
 */
