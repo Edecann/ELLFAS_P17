@@ -3,7 +3,7 @@
 #Include 'FWMVCDEF.ch'
 
 //Alterado Edecan
-//Alterado por Kurts
+//Alterado por Kurts - 27/01/2022
 
 #DEFINE POS_QATU		1
 #DEFINE POS_QPEDVEN		2
