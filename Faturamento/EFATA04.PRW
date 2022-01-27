@@ -19,6 +19,7 @@
 User Function EFATA04()
 
 // Ajuste - Edecan 11:31 25/02/21
+// Ajuste - Kurts - TESTES 27/01/2021
 
 If SCJ->CJ_STATUS $ "A;" //Somente se tiver em aberto
                          
